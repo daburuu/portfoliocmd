@@ -1,0 +1,10 @@
+.Console{
+    width: 80vw;
+    aspect-ratio: 2/1;
+    margin: 0 auto;
+    background-color: #000000;
+    position: relative;
+    padding: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
