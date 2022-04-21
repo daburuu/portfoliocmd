@@ -1,7 +1,12 @@
 .Window{
-    width: 100%;
-    height: auto;
+    width: calc(100% - 25px);
+    height: 100%;
     color: #FFFFFF;
     padding-left: 25px;
-    font-size: 25px;
+    overflow-y: scroll;
+    max-height: calc(100% - 5px);
+    padding-top: 5px;
+}
+.Window div{
+    font-size: 16px;
 }

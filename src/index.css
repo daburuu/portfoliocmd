@@ -2,6 +2,7 @@
 
 body {
   font-family: 'M PLUS 2', sans-serif;
+  overflow: hidden;
 }
 
 html, body, #root{
@@ -10,4 +11,10 @@ html, body, #root{
 
 *{
   font-size: 25px;
+}
+
+body{
+  background-image: url('../public/bg.jpg');
+  margin: 0;
+  padding: 0;
 }

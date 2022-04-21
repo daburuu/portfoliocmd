@@ -1,22 +1,32 @@
 import './Console.css';
-import Input from '../Parts/Input/Input';
 import Window from '../Parts/Window/Window';
-import { useState } from 'react';
+import Draggable from 'react-draggable';
+import { useRef } from 'react';
+
 function Console() {
-  const [path, setPath] = useState('~ >');
-  const [history, setHistory] = useState([]);
+  const input = useRef(null);
+  const console = useRef(null);
+
+  function focusInput(){
+    input.current.focus();
+  }
+
+  function closeConsole(){
+    console.current.style.opacity = 0;
+  }
 
   return (
-    <div className="Console">
-      <Window 
-        history={history}
-        path={path} />
-      <Input
-        setHistory={setHistory}
-        history={history} 
-        setPath={setPath}
-        path={path} />
-    </div>
+    <Draggable>
+      <div className="console-window" ref={console} onClick={focusInput}>
+        <div className="status-bar">
+          <div className="window-name">Terminal</div>
+          <div className="close-btn" onClick={closeConsole} >X</div>
+        </div>
+        <div className="Console">
+          <Window forwardedRef={input} />
+        </div>
+      </div>
+    </Draggable>
   );
 }
 

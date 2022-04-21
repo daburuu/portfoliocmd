@@ -1,0 +1,6 @@
+.SideBar{
+    width: 60px;
+    height: calc(100% - 40px);
+    background-color: #FFFFFF;
+    margin-top: 40px;
+}

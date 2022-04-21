@@ -1,24 +1,26 @@
 .Input{
     width: 100%;
-    height: 40px;
+    height: 25px;
     cursor: text;
-    position: relative;
+    position: sticky;
+    bottom: 0;
     display: flex;
 }
 
 .path{
     color: #FFFFFF;
-    margin-left: 25px;
     display: inline-block;
+    font-size: 16px;
 }
 input{
     display: inline-block;
     flex: 1;
-    background-color: #000000;
+    background-color: #0c0c0c;
     color: #FFFFFF;
     border: none;
     outline: none;
     font-family: 'M PLUS 2', sans-serif;
     margin-left: -2px;
-    margin-top: -3px;
+    margin-top: 0px;
+    font-size: 16px;
 }
