@@ -4,7 +4,7 @@ import './Input.css';
 import ExplorerHelper from '../../../helpers/ExplorerHelper/ExplorerHelper';
 
 function Window({forwardedRef}) {
-    const [path, setPath] = useState("~ >");
+    const [path, setPath] = useState("user@dlageiste BRWSRPC ~");
     const [history, setHistory] = useState([]);
     const _explorerHelper = new ExplorerHelper();
 
@@ -17,27 +17,48 @@ function Window({forwardedRef}) {
         setHistory([...history, str]);
     }
 
+    function changeDirectory(dest){
+        if(_explorerHelper.changeDirectory(path.split(" ").reverse()[0], dest)){
+            setPath(`user@dlageiste BRWSRPC ${dest}`);
+            return "";
+        }
+        return `bash: cd: ${dest}: No such file or directory`;
+    }
+
     function onKeyPressed(event) {
         if(event.key === "Enter") {
-          let userInput = event.target.value;
-          let resp = "";
-          if (userInput.indexOf("cd") !== -1){
-              if(userInput.split(" ").length > 2) {
-                  event.target.value = "";
+            let userInput = event.target.value;
+            let resp = "";
+
+            if (userInput.indexOf("cd") !== -1){
+                if (userInput.split(" ").length > 2) {
+                    resp = `bash: cd: too many arguments`;
+                } else {
+                    if (userInput === "cd .."){
+                      _explorerHelper.changeParentDirectory(path);
+                    } else {
+                        changeDirectory(userInput.split(" ").reverse()[0]);
+                    }
                 }
-                setPath(userInput.split(" ").reverse()[0] + " >");
             } else if (userInput.indexOf("ls") !== -1) {
-                let explorer = _explorerHelper.printDirectories("~")[path.split(" ")[0]];
-                if (explorer){
-                    explorer.map(e => {
-                        resp += `${e}     `;
-                    });
-                }
+                let explorer = _explorerHelper.printDirectories("~")[path.split(" ").reverse()[0]];
+                explorer && explorer.forEach(e => {
+                    if(e.indexOf('..') === -1) {
+                        resp += `${e}     `; 
+                    }
+                });
+            } else if (userInput === "clear") {
+                setHistory([]);
+            } else if (userInput === "pwd") {
+                console.log("pwd");
             } else {
-                resp = `bash: ${userInput}: command not found.`;
+                resp = `bash: ${userInput.split(" ")[0]}: command not found`;
             }
-            manageHistory(userInput, resp);
-          event.target.value = "";
+
+            if (userInput !== "clear") {
+                manageHistory(userInput, resp);
+            }
+            event.target.value = "";
         }
     }
 
@@ -48,9 +69,9 @@ function Window({forwardedRef}) {
 
     return (
         <div className="Window" id="Window">
-            {history.map((e, i) => {
+            {history !== [] && history.map((e, i) => {
                 return(
-                    <div key={i}>{e[0]}{e[1]}<br/>{e[2]}</div>
+                    <div key={i}>{e[0]}<br />$ {e[1]}<br/>{e[2]}</div>
                 )
             })}
             <div className="Input">

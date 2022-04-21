@@ -8,3 +8,24 @@
 .Desktop.visible{
     opacity: 1;
 }
+.desktop-icon{
+    position: absolute;
+    text-align: center;
+}
+.desktop-icon img{
+    width: 50px;
+    pointer-events: none;
+}
+.desktop-icon .icon-name{
+    color: #FFFFFF;
+    font-size: 12px;
+}
+/* 
+   SIDE BAR 60px WIDTH
+   TOP BAR 40px HEIGHT
+   ADD 20 PX PADDING TOP & LEFT
+*/
+.notepad{
+    left: 80px;
+    top: 60px;
+}
