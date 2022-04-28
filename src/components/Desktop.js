@@ -17,7 +17,7 @@ function Desktop({ isLoading }){
     return(
         <div className={`Desktop ${isLoading ? '' : 'visible'}`}>
             <TopBar />
-            <SideBar itemsToggled={{consoleToggled, notepadToggled}} setConsoleToggled={setConsoleToggled} />
+            <SideBar itemsToggled={{consoleToggled, notepadToggled}} setConsoleToggled={setConsoleToggled} setNotepadToggled={setNotepadToggled} />
             <Draggable>
                 <div className="desktop-icon notepad" onDoubleClick={openNotepad}>
                     <img src="/notepad.png" />
