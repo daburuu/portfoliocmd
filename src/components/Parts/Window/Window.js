@@ -2,22 +2,25 @@ import { useEffect, useState } from 'react';
 import './Window.css';
 import './Input.css';
 import ExplorerHelper from '../../../helpers/ExplorerHelper/ExplorerHelper';
+import EnvironmentHelper from '../../../helpers/EnvironmentHelper/EnvironmentHelper';
 
 function Window({forwardedRef}) {
     const [path, setPath] = useState("user@dlageiste BRWSRPC ~");
     const [history, setHistory] = useState([]);
     const _explorerHelper = new ExplorerHelper();
+    const _env = new EnvironmentHelper();
 
     function manageHistory(userInput, resp){
         let str = [];
-        let test = path;
-        str[0] = test;
-        str[1] = userInput;
-        str[2] = resp;
+        let savedPath = path;
+        str['path'] = savedPath;
+        str['userInput'] = userInput;
+        str['resp'] = resp;
         setHistory([...history, str]);
     }
 
     function changeDirectory(dest){
+        console.log(dest);
         if(_explorerHelper.changeDirectory(path.split(" ").reverse()[0], dest)){
             setPath(`user@dlageiste BRWSRPC ${dest}`);
             return "";
@@ -34,23 +37,32 @@ function Window({forwardedRef}) {
                 if (userInput.split(" ").length > 2) {
                     resp = `bash: cd: too many arguments`;
                 } else {
-                    if (userInput === "cd .."){
-                      _explorerHelper.changeParentDirectory(path);
+                    if (userInput === "cd ..") { // @TODO: IF DIRECTORY DO NOT EXIST
+                        setPath(`user@dlageiste BRWSRPC ${_explorerHelper.changeParentDirectory()}`);
                     } else {
                         changeDirectory(userInput.split(" ").reverse()[0]);
                     }
                 }
             } else if (userInput.indexOf("ls") !== -1) {
-                let explorer = _explorerHelper.printDirectories("~")[path.split(" ").reverse()[0]];
-                explorer && explorer.forEach(e => {
-                    if(e.indexOf('..') === -1) {
+                console.log(_env.getPWD());
+                let explorer = _explorerHelper.printDirectories(_env.getPWD().split("/"));
+                if (explorer) {
+                    for(const e in explorer) {
                         resp += `${e}     `; 
                     }
-                });
+                }
             } else if (userInput === "clear") {
                 setHistory([]);
             } else if (userInput === "pwd") {
-                console.log("pwd");
+                resp = _env.getPWD();
+            } else if (userInput === "env") {
+                let env = _env.getEnv();
+                resp = [];
+                Object.entries(env).forEach((e) => {
+                    resp.push(`${e[0]}=${e[1]}`);
+                });
+            } else if (userInput === "help") { 
+                resp = ["available commands", "env | cd | ls | pwd | clear | help "];
             } else {
                 resp = `bash: ${userInput.split(" ")[0]}: command not found`;
             }
@@ -70,9 +82,21 @@ function Window({forwardedRef}) {
     return (
         <div className="Window" id="Window">
             {history !== [] && history.map((e, i) => {
-                return(
-                    <div key={i}>{e[0]}<br />$ {e[1]}<br/>{e[2]}</div>
-                )
+                if (Array.isArray(e['resp'])){
+                    return(
+                        <div key={i}>{e['path']}<br />$ {e['userInput']}<br/>
+                        {e['resp'].map((line, i) => {
+                            return (
+                            <div key={`line${i}`}>{line}</div>
+                            )
+                        })}
+                        </div>
+                    ) 
+                } else {
+                    return(
+                        <div key={i}><span className="path">{e['path']}</span>$ {e['userInput']}<br/>{e['resp']}</div>
+                    )
+                }
             })}
             <div className="Input">
                 <div className='path'>{path}</div>

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.TopBar{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgba(0,0,0,0.6);
+    align-items: center;
+    .logo{
+        color: #FFFFFF;
+        font-size: 20px;
+        margin-left: 80px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .status-icons{
+        height: 100%;
+        width: 200px;
+        float: right;
+        text-align: right;
+        img{
+            height: 15px;
+        }
+        .clock{
+            font-family: 'VT323', monospace;
+            display: inline-block;
+            color: #FFFFFF;
+            margin: 0 15px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 25px;
+        }
+    }
+}

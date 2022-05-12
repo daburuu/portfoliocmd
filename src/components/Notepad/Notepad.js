@@ -3,22 +3,17 @@ import Draggable from 'react-draggable';
 
 import './Notepad.scss';
 
-function Notepad({notepadToggled, setNotepadToggled}){
-    const [zIndex, setZIndex] = useState(null);
+function Notepad({notepadToggled, setNotepadToggled, zIndexes, setZIndexes}){
 
     const text =
-        "Hello! 👋\n Glad to see you there\n I'm David, a FullStack Web & Blockchain developer for more than 5 years. If you need some help, just open the terminal on the sidebar and type 'help'.\n' Have fun!";
-
-    useEffect(() => {
-        console.log(notepadToggled);
-    });
+        "Hello! 👋\nGlad to see you there\nI'm David, a FullStack Web & Blockchain developer for more than 5 years.\nIf you need some help, just open the terminal on the sidebar and type 'help'.\nHave fun!";
 
     function handleClick(){
-        setZIndex(999);
-    }
-
-    function handleClickOutside(){
-        setZIndex(1);
+        setZIndexes({
+            "console": zIndexes['console'] > 0 ? zIndexes['console'] - 1 : zIndexes['console'],
+            "calculator": zIndexes['calculator'] > 0 ? zIndexes['calculator'] - 1 : zIndexes['calculator'], 
+            "notepad": 3
+        });
     }
 
     function closeNotepad(){
@@ -27,7 +22,7 @@ function Notepad({notepadToggled, setNotepadToggled}){
     
     return(
         <Draggable handle=".status-bar">
-            <div style={{'zIndex': zIndex}} className={`notepad-window ${notepadToggled ? 'visible' : ''}`} onClick={handleClick} onBlur={handleClickOutside}>
+            <div style={{'zIndex': zIndexes['notepad']}} className={`notepad-window ${notepadToggled ? 'visible' : ''}`} onClick={handleClick}>
                 <div className="status-bar">
                     <div className="logo"><img alt="notepad.png" src="/notepad.png" /></div>
                     <div className="window-name">About me</div>

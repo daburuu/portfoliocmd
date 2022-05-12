@@ -1,4 +1,4 @@
-.notepad-window{
+.calculator-window{
     position: absolute;
     top: 10%;
     left: 20%;
@@ -7,7 +7,7 @@
     background-color: #FFFFFF;
     box-shadow: 7px 2px 4px 1px rgba(0, 0, 0, 0.4);
     opacity: 0;
-    pointer-events: none; 
+    pointer-events: none;
     &.visible{
         opacity: 1;
         pointer-events: all;
@@ -55,19 +55,10 @@
             font-weight: bold;
         }
     }
-    .text-editor{
-        z-index: 3;
+    .Calculator{
         position: relative;
+        z-index: 3;
         height: 100%;
-        textarea.editor{
-            font-size: 18px;
-            min-width: 100%;
-            border: none;
-            height: 100%;
-            padding: 0;
-            resize: none;
-            outline: none;
-            overflow: scroll;
-        }
+        background-color: #FFFFFF;
     }
 }

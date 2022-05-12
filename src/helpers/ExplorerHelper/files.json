@@ -1,8 +1,9 @@
 {
-    "~": [
-        "..=>~",
-        "dossier1",
-        "dossier2",
-        "dossier3"
-    ]
+    "~": {
+        "dossier1": {
+            "dossier4": {}
+        },
+        "dossier2": {},
+        "dossier3": {}
+    }
 }

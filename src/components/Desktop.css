@@ -12,10 +12,12 @@
     position: absolute;
     text-align: center;
 }
+.calculator-icon img,
 .desktop-icon img{
     width: 50px;
     pointer-events: none;
 }
+.calculator-icon .icon-name,
 .desktop-icon .icon-name{
     color: #FFFFFF;
     font-size: 12px;
@@ -26,6 +28,11 @@
    ADD 20 PX PADDING TOP & LEFT
 */
 .notepad{
+    width: 57px;
     left: 80px;
+    top: 60px;
+}
+.calculator{
+    left: 157px;
     top: 60px;
 }
