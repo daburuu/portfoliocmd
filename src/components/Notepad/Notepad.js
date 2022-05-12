@@ -12,7 +12,8 @@ function Notepad({notepadToggled, setNotepadToggled, zIndexes, setZIndexes}){
         setZIndexes({
             "console": zIndexes['console'] > 0 ? zIndexes['console'] - 1 : zIndexes['console'],
             "calculator": zIndexes['calculator'] > 0 ? zIndexes['calculator'] - 1 : zIndexes['calculator'], 
-            "notepad": 3
+            "fileExplorer": zIndexes['fileExplorer'] > 0 ? zIndexes['fileExplorer'] - 1 : zIndexes['fileExplorer'], 
+            "notepad": 4
         });
     }
 

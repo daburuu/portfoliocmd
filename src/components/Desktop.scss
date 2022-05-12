@@ -11,6 +11,11 @@
 .desktop-icon{
     position: absolute;
     text-align: center;
+    border: 1px solid transparent;
+    &:hover{
+        background-color: rgba(173, 216, 230, .4);
+        border: 1px solid #009DFF;
+    }
 }
 .calculator-icon img,
 .desktop-icon img{
@@ -28,11 +33,20 @@
    ADD 20 PX PADDING TOP & LEFT
 */
 .notepad{
-    width: 57px;
+    width: 70px;
+    height: 80px;
     left: 80px;
     top: 60px;
 }
 .calculator{
-    left: 157px;
+    width: 70px;
+    height: 80px;
+    left: 170px;
+    top: 60px;
+}
+.file-explorer{
+    width: 70px;
+    height: 80px;
+    left: 260px;
     top: 60px;
 }

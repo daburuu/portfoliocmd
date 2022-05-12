@@ -10,7 +10,8 @@ function Console({consoleToggled, setConsoleToggled, zIndexes, setZIndexes}) {
 
   function focusInput(){
     setZIndexes({
-      "console": 3,
+      "console": 4,
+      "fileExplorer": zIndexes['fileExplorer'] > 0 ? zIndexes['fileExplorer'] - 1 : zIndexes['fileExplorer'], 
       "calculator": zIndexes['calculator'] > 0 ? zIndexes['calculator'] - 1 : zIndexes['calculator'], 
       "notepad": zIndexes['notepad'] > 0 ? zIndexes['notepad'] - 1 : zIndexes['notepad']
     });

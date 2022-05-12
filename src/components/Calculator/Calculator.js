@@ -8,7 +8,8 @@ function Calculator({calculatorToggled, setCalculatorToggled, zIndexes, setZInde
     function handleClick(){
         setZIndexes({
             "console": zIndexes['console'] > 0 ? zIndexes['console'] - 1 : zIndexes['console'],
-            "calculator": 3, 
+            "fileExplorer": zIndexes['fileExplorer'] > 0 ? zIndexes['fileExplorer'] - 1 : zIndexes['fileExplorer'], 
+            "calculator": 4, 
             "notepad": zIndexes['notepad'] > 0 ? zIndexes['notepad'] - 1 : zIndexes['notepad']
         });
     }
