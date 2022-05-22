@@ -12,9 +12,29 @@
     position: absolute;
     text-align: center;
     border: 1px solid transparent;
-    &:hover{
-        background-color: rgba(173, 216, 230, .4);
-        border: 1px solid #009DFF;
+    &.selected{
+        .icon{
+            background-color: rgba(173, 216, 230, .4);
+            border: 1px solid #009DFF;
+        }
+        .icon-name{
+            white-space: nowrap;
+            overflow: visible;
+            text-overflow: unset;
+            background-color: #009DFF;
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .icon{
+        width: 70px;
+        height: 65px;
+        border: 1px solid transparent;
+        &:hover{
+            background-color: rgba(173, 216, 230, .4);
+            border: 1px solid #009DFF;
+        }
     }
 }
 .calculator-icon img,
@@ -26,27 +46,34 @@
 .desktop-icon .icon-name{
     color: #FFFFFF;
     font-size: 12px;
+    text-overflow: ellipsis;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(100% + 2px);
+    margin-top: 5px;
 }
 /* 
    SIDE BAR 60px WIDTH
    TOP BAR 40px HEIGHT
    ADD 20 PX PADDING TOP & LEFT
 */
-.notepad{
-    width: 70px;
-    height: 80px;
-    left: 80px;
-    top: 60px;
-}
-.calculator{
-    width: 70px;
-    height: 80px;
-    left: 170px;
-    top: 60px;
-}
+.notepad,
+.calculator,
 .file-explorer{
     width: 70px;
     height: 80px;
-    left: 260px;
     top: 60px;
+    img{
+        border: 1px solid transparent;
+    }
+}
+.notepad{
+    left: 80px;
+}
+.calculator{
+    left: 170px;
+}
+.file-explorer{
+    left: 260px;
 }

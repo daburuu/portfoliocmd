@@ -2,7 +2,7 @@
     position: absolute;
     top: 10%;
     left: 20%;
-    width: 30vw;
+    width: 20vw;
     aspect-ratio: 1/1.1;
     background-color: #FFFFFF;
     box-shadow: 7px 2px 4px 1px rgba(0, 0, 0, 0.4);
@@ -59,6 +59,39 @@
         position: relative;
         z-index: 3;
         height: 100%;
-        background-color: #FFFFFF;
+        background-color: #1a1e34;
+        .result{
+            width: 100%;
+            height: 25%;
+            margin-bottom: 25px;
+        }
+        .keypad{
+            background-color: #000000;
+            height: 100%;
+            table{
+                width: 100%;
+                padding: 0 5px;
+                tr{
+                    margin-top: 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    td{
+                        color: #FFFFFF;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 60px;
+                        text-align: center;
+                        width: calc(25% - 5px);
+                        border-radius: 25px 25px 0 0;
+                        background-color: #1a1e34;
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
