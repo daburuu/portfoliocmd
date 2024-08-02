@@ -6,7 +6,7 @@ import './Notepad.scss';
 function Notepad({notepadToggled, setNotepadToggled, zIndexes, setZIndexes}){
 
     const text =
-        "Hello! 👋\nGlad to see you there\nI'm David, a FullStack Web & Blockchain developer for more than 5 years.\nIf you need some help, just open the terminal on the sidebar and type 'help'.\nHave fun!";
+        "Hello! 👋\nGlad to see you there\nI'm David, a FullStack Web & Blockchain developer for more than 8 years.\nIf you need some help, just open the terminal on the sidebar and type 'help'.\nHave fun!";
 
     function handleClick(){
         setZIndexes({

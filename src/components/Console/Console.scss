@@ -7,7 +7,9 @@
     left: 20%;
     box-shadow: 7px 2px 4px 1px rgba(0, 0, 0, 0.4);
     opacity: 0;
-
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
     &.visible{
         opacity: 1;
     }
